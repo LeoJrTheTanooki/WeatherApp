@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <style>
+      .container {
+        border: solid red;
+        
+      }
+      .row {
+        border: solid blue;
+      }
+      .col,
+      .col-5,
+      .col-6 {
+        border: solid yellow;
+      }
+      .grad-contain{
+        background: linear-gradient(180deg, rgba(0, 20, 70, 0.8) 0%, rgba(56, 68, 98, 0.8) 100%);
+      }
+    </style>
+  </head>
+  <body>
+    
+    <img src="" alt="" />
+    <div class="container" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.6035) 0%, rgba(2, 32, 60, 0.85) 83.85%, rgba(10, 31, 50, 0.85) 100%);
+    ">
+      <div class="row">
+        <div class="col-6">
+          <input style="background: #FFFFFF42;
+          " type="text" placeholder="Search a city" />
+          <div class="container grad-contain" >
+            <p>Current Weather</p>
+            <p>City, ST</p>
+            <p>70°F|°C</p>
+            <p>Clear Sky</p>
+          </div>
+          <div class="row">
+            <div class="col-6">h</div>
+            <div class="col-6">h</div>
+            <div class="col-6">h</div>
+            <div class="col-6">h</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="container grad-contain">
+            <p>5 Day Forecast</p>
+            <hr>
+            <p>Mon <img style="height: 1em;" src="./assets/icons8-partly-cloudy-day-96.png" alt="Icon">H: 75° L: 65° V</p>
+            <hr>
+            <p>Tue <img style="height: 1em;" src="./assets/icons8-partly-cloudy-day-96.png" alt="Icon">H: 75° L: 65° V</p>
+            <hr>
+            <p>Wed <img style="height: 1em;" src="./assets/icons8-partly-cloudy-day-96.png" alt="Icon">H: 75° L: 65° V</p>
+            <hr>
+            <p>Thu <img style="height: 1em;" src="./assets/icons8-partly-cloudy-day-96.png" alt="Icon">H: 75° L: 65° V</p>
+            <hr>
+            <p>Fri <img style="height: 1em;" src="./assets/icons8-partly-cloudy-day-96.png" alt="Icon">H: 75° L: 65° V</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts/app.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
