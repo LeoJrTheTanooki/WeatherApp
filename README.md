@@ -44,6 +44,7 @@ Assign id to necessary elements via span
 * Rounded corners, added shadows, adjusted font
 * Adjusted image positions and sizes
 * Made scrollable container to right column
+* Reorganized columns and rows
 * Added span ids
 
 ### Needs Work
