@@ -46,6 +46,7 @@ function success(position) {
     let icon = data.weather[0].icon;
     let wind = data.wind.speed;
     let humidity = data.main.humidity;
+    let location = state ? `${city}, ${state}` : `${city}, ${country}`;
     //   let tempC;
     //   let temp_minC;
     //   let temp_maxC;
@@ -59,9 +60,7 @@ function success(position) {
     //   `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&id=${apiKey}&units=imperial`
     // );
     console.log(data);
-    state
-      ? console.log(`${city}, ${state}`)
-      : console.log(`${city}, ${country}`);
+    console.log(location);
     console.log(`Weather: ${weather}`);
     console.log(`Conditions: ${conditions}`);
     console.log(`Icon: ${icon}`);

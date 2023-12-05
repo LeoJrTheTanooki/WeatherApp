@@ -1,10 +1,42 @@
 body {
-    background-image: url(../assets/pexels_videos_2782\ \(1080p\).gif);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: white;
+  background-image: url(../assets/pexels_videos_2782\ \(1080p\).gif);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
+  font-family: "Josefin Sans", sans-serif;
 }
-.grad-contain{
-    background: linear-gradient(180deg, rgba(0, 20, 70, 0.8) 0%, rgba(56, 68, 98, 0.8) 100%);
-  }
+.grad-contain {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 20, 70, 0.8) 0%,
+    rgba(56, 68, 98, 0.8) 100%
+  );
+}
+
+.container {
+  box-shadow: 0px 4px 35px 0px #000000;
+  border-radius: 20px;
+}
+.grad-contain {
+  box-shadow: 0px 4px 50px 0px #00000040;
+}
+
+.fav-btn{
+  height: 2em;
+  background-color: #38598b;
+  padding: 4px;
+  transition: background-color 0.5s;
+}
+
+.fav-btn:hover {
+  background-color: #618ac7;
+}
+
+img{
+    height: 1em;
+}
+
+h1{
+    font-weight: bold
+}
