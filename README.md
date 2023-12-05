@@ -1,4 +1,11 @@
 12/4/23
+Standup
+* Go over Figma and gather necessary assets
+* Set up HTML and structure of website
+* Upload to GitHub
+* Make API fetches show in console
+* Listen to Vercel lecture
+End of day report
 * Listened to morning lecture
 * Worked on setting up necessary files
 * Worked on structure and layout of website
