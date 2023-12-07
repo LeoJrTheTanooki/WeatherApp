@@ -54,7 +54,7 @@
               class="rounded-pill"
               style="background: #ffffff42; color: white; width: 400px"
               type="text"
-              placeholder="&#x1F50D Search for a city"
+              placeholder="&#x1F50D; Search for a city"
             />
             <button
               class="btn btn-outline-secondary dropdown-toggle"
@@ -63,8 +63,7 @@
               aria-expanded="false"
             >
               <img
-                id="fav_btn"
-                class="rounded-circle fav-btn"
+                class="rounded-circle savedBtn"
                 src="./assets/star.png"
                 alt=""
               />
@@ -82,38 +81,41 @@
             class="container grad-contain text-center mt-4"
             style="position: relative"
           >
-            <img
-              src="./assets/sun.png"
+            <img id="iconToday"
+              src="./assets/weathericons/01d.png"
               alt=""
               style="position: absolute; height: 5em; top: -20px; left: -20px"
             />
             <h1>Current Weather</h1>
-            <p>
-              <span id="location">City, ST</span>
-              <img style="height: 1em" src="./assets/starline.png" alt="" />
-            </p>
+            <h3>
+              <span id="location">Location</span>
+              <a href="#">
+                <img
+                  id="favBtn"
+                  style="height: 1em"
+                  src="./assets/starline.png"
+                  alt=""
+                />
+              </a>
+            </h3>
             <p style="vertical-align: text-top">
-              <span id="temp" style="font-size: 70px">70</span
+              <span id="temp" style="font-size: 70px">0</span
               ><span id="f_toggle">°F</span>|<span
                 id="c_toggle"
                 style="color: #ffffff8c"
                 >°C</span
               >
             </p>
-            <p>Clear Sky</p>
+            <h2 id="weather">Weather</h2>
           </div>
           <div class="row">
             <div class="col-6 text-center">
               <div class="row">
                 <div class="col">
                   Max
-                  <img
-                    
-                    src="./assets/Thermometer.png"
-                    alt=""
-                  />
+                  <img src="./assets/Thermometer.png" alt="" />
                 </div>
-                <div class="col" id="temp_max">65°F</div>
+                <div class="col" id="temp_max">0°F</div>
               </div>
             </div>
 
@@ -121,13 +123,9 @@
               <div class="row">
                 <div class="col">
                   Min
-                  <img
-                    
-                    src="./assets/ThermometerCold.png"
-                    alt=""
-                  />
+                  <img src="./assets/ThermometerCold.png" alt="" />
                 </div>
-                <div class="col" id="temp_min">45°F</div>
+                <div class="col" id="temp_min">0°F</div>
               </div>
             </div>
 
@@ -135,9 +133,9 @@
               <div class="row">
                 <div class="col">
                   Wind
-                  <img  src="./assets/Wind.png" alt="" />
+                  <img src="./assets/Wind.png" alt="" />
                 </div>
-                <div class="col" id="wind">10m/s</div>
+                <div class="col" id="wind">0m/s</div>
               </div>
             </div>
 
@@ -145,212 +143,437 @@
               <div class="row">
                 <div class="col">
                   Humidity
-                  <img  src="./assets/DropHalf.png" alt="" />
+                  <img src="./assets/DropHalf.png" alt="" />
                 </div>
-                <div class="col" id="humidity">65°F</div>
+                <div class="col" id="humidity">0%</div>
               </div>
             </div>
           </div>
         </div>
+
         <div class="col-6">
           <div
             class="container grad-contain overflow-y-scroll"
             style="height: 450px"
           >
-            <h1><img src="./assets/CalendarBlank.png" alt="">5 Day Forecast</h1>
+            <h1>
+              <img src="./assets/CalendarBlank.png" alt="" />5 Day Forecast
+            </h1>
             <hr />
-
-            <!-- Add to carets -->
-            <!-- <p class="d-inline-flex gap-1">
-              <a
-                class="btn btn-primary"
-                data-bs-toggle="collapse"
-                href="#collapseExample"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                Link with href
-              </a>
-              <button
-                class="btn btn-primary"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                Button with data-bs-target
-              </button>
-            </p> -->
-            <!--  -->
-
-            <div class="collapse" id="collapseExample">
-              <div>
+            <!-- Day 1 -->
+            <div class="row">
+              <div class="col collapse show" id="day1Collapse">
+                <span id="day5">Mon</span>
+              </div>
+              <div class="col collapse show" id="day1Collapse">
+                <img
+                  src="./assets/weathericons/02d.png"
+                  alt="Icon"
+                />
+              </div>
+              <div class="col collapse show" id="day1Collapse">
+                <span id="temp_max5"> H: 75° </span>
+              </div>
+              <div class="col collapse show" id="day1Collapse">
+                <span id="temp_min5" style="color: #a8a8a8"> L: 65° </span>
+              </div>
+              <div class="col d-flex justify-content-end">
+                <a
+                  data-bs-toggle="collapse"
+                  href="#day1Collapse"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="day1Collapse"
+                >
+                  <img
+                    src="./assets/CaretDown.png"
+                    class="caret caret-reversed"
+                    id="caret"
+                    alt=""
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="collapse row" id="day1Collapse">
+              <div class="col">
+                <p>
+                  Mon
+                  <img
+                    src="./assets/weathericons/02d.png"
+                    alt="Icon"
+                  />
+                </p>
+                <p style="vertical-align: text-top">
+                  <span id="temp" style="font-size: 40px">65</span
+                  ><span id="f_toggle2">°F</span>|<span
+                    id="c_toggle2"
+                    style="color: #ffffff8c"
+                    >°C</span
+                  >
+                </p>
+                <p>Clear Sky</p>
+              </div>
+              <div class="col">
                 <div class="row">
                   <div class="col">
-                    <p>
-                      Mon
-                      <img
-                        
-                        src="./assets/icons8-partly-cloudy-day-96.png"
-                        alt="Icon"
-                      />
-                    </p>
-                    <p style="vertical-align: text-top">
-                      <span id="temp" style="font-size: 40px">65</span
-                      ><span id="f_toggle2">°F</span>|<span
-                        id="c_toggle2"
-                        style="color: #ffffff8c"
-                        >°C</span
-                      >
-                    </p>
-                    <p>Clear Sky</p>
+                    <img src="./assets/Thermometer.png" alt="" />
                   </div>
+                  <div class="col">75°</div>
+                </div>
+                <div class="row">
                   <div class="col">
-                    <div class="row">
-                      <div class="col">
-                        <img src="./assets/Thermometer.png" alt="" />
-                      </div>
-                      <div class="col">75°</div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <img src="./assets/ThermometerCold.png" alt="" />
-                      </div>
-                      <div class="col">65°</div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <img src="./assets/Wind.png" alt="" />
-                      </div>
-                      <div class="col">10 m/s</div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <img src="./assets/DropHalf.png" alt="" />
-                      </div>
-                      <div class="col">15%</div>
-                    </div>
+                    <img src="./assets/ThermometerCold.png" alt="" />
                   </div>
+                  <div class="col">65°</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/Wind.png" alt="" />
+                  </div>
+                  <div class="col">10 m/s</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/DropHalf.png" alt="" />
+                  </div>
+                  <div class="col">15%</div>
                 </div>
               </div>
             </div>
+            <hr />
+            <!-- Day 1 End -->
 
+            <!-- Day 2 -->
             <div class="row">
-              <div class="col">
-                <span id="day5">Mon</span>
+              <div class="col collapse show" id="day2Collapse">
+                <span id="day5">Tues</span>
               </div>
-              <div class="col">
+              <div class="col collapse show" id="day2Collapse">
                 <img
-                  
-                  src="./assets/icons8-partly-cloudy-day-96.png"
+                  src="./assets/weathericons/02d.png"
                   alt="Icon"
                 />
               </div>
-              <div class="col">
+              <div class="col collapse show" id="day2Collapse">
                 <span id="temp_max5"> H: 75° </span>
               </div>
-              <div class="col">
+              <div class="col collapse show" id="day2Collapse">
                 <span id="temp_min5" style="color: #a8a8a8"> L: 65° </span>
               </div>
-              <div class="col">
-                <img src="./assets/CaretDown.png" id="caret" alt="" />
+              <div class="col d-flex justify-content-end">
+                <a
+                  data-bs-toggle="collapse"
+                  href="#day2Collapse"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="day2Collapse"
+                >
+                  <img
+                    src="./assets/CaretDown.png"
+                    class="caret caret-reversed"
+                    id="caret"
+                    alt=""
+                  />
+                </a>
               </div>
             </div>
+            <div class="collapse row" id="day2Collapse">
+              <div class="col">
+                <p>
+                  Tues
+                  <img
+                    src="./assets/weathericons/02d.png"
+                    alt="Icon"
+                  />
+                </p>
+                <p style="vertical-align: text-top">
+                  <span id="temp" style="font-size: 40px">65</span
+                  ><span id="f_toggle2">°F</span>|<span
+                    id="c_toggle2"
+                    style="color: #ffffff8c"
+                    >°C</span
+                  >
+                </p>
+                <p>Clear Sky</p>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/Thermometer.png" alt="" />
+                  </div>
+                  <div class="col">75°</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/ThermometerCold.png" alt="" />
+                  </div>
+                  <div class="col">65°</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/Wind.png" alt="" />
+                  </div>
+                  <div class="col">10 m/s</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/DropHalf.png" alt="" />
+                  </div>
+                  <div class="col">15%</div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <!-- Day 2 End -->
 
-            <hr />
+            <!-- Day 3 -->
             <div class="row">
-              <div class="col">
-                <span id="day5">Tue</span>
-              </div>
-              <div class="col">
-                <img
-                  
-                  src="./assets/icons8-partly-cloudy-day-96.png"
-                  alt="Icon"
-                />
-              </div>
-              <div class="col">
-                <span id="temp_max5"> H: 75° </span>
-              </div>
-              <div class="col">
-                <span id="temp_min5" style="color: #a8a8a8"> L: 65° </span>
-              </div>
-              <div class="col">
-                <img src="./assets/CaretDown.png" id="caret" alt="" />
-              </div>
-            </div>
-            <hr />
-            <div class="row">
-              <div class="col">
+              <div class="col collapse show" id="day3Collapse">
                 <span id="day5">Wed</span>
               </div>
-              <div class="col">
+              <div class="col collapse show" id="day3Collapse">
                 <img
-                  
-                  src="./assets/icons8-partly-cloudy-day-96.png"
+                  src="./assets/weathericons/02d.png"
                   alt="Icon"
                 />
               </div>
-              <div class="col">H: <span id="temp_max5"> 75° </span></div>
-              <div class="col">
-                L:
-                <span id="temp_min5" style="color: #a8a8a8"> 65° </span>
-              </div>
-              <div class="col">
-                <img src="./assets/CaretDown.png" id="caret" alt="" />
-              </div>
-            </div>
-            <hr />
-            <div class="row">
-              <div class="col">
-                <span id="day5">Thu</span>
-              </div>
-              <div class="col">
-                <img
-                  
-                  src="./assets/icons8-partly-cloudy-day-96.png"
-                  alt="Icon"
-                />
-              </div>
-              <div class="col">H: <span id="temp_max5"> 75° </span></div>
-              <div class="col">
-                L: <span id="temp_min5" style="color: #a8a8a8"> 65° </span>
-              </div>
-              <div class="col">
-                <img src="./assets/CaretDown.png" id="caret" alt="" />
-              </div>
-            </div>
-            <hr />
-            <div class="row">
-              <div class="col">
-                <span id="day5">Fri</span>
-              </div>
-              <div class="col">
-                <img
-                  
-                  src="./assets/icons8-partly-cloudy-day-96.png"
-                  alt="Icon"
-                />
-              </div>
-              <div class="col">
+              <div class="col collapse show" id="day3Collapse">
                 <span id="temp_max5"> H: 75° </span>
               </div>
-              <div class="col">
+              <div class="col collapse show" id="day3Collapse">
                 <span id="temp_min5" style="color: #a8a8a8"> L: 65° </span>
               </div>
-              <div class="col">
-                <img src="./assets/CaretDown.png" id="caret" alt="" />
+              <div class="col d-flex justify-content-end">
+                <a
+                  data-bs-toggle="collapse"
+                  href="#day3Collapse"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="day3Collapse"
+                >
+                  <img
+                    src="./assets/CaretDown.png"
+                    class="caret caret-reversed"
+                    id="caret"
+                    alt=""
+                  />
+                </a>
               </div>
             </div>
-            <!-- <hr />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut ex
-              fugit, accusantium perspiciatis iusto omnis beatae vitae hic
-              exercitationem rerum libero atque repudiandae magnam? Nemo
-              nesciunt ipsam provident. Amet, impedit?
-            </p> -->
+            <div class="collapse row" id="day3Collapse">
+              <div class="col">
+                <p>
+                  Wed
+                  <img
+                    src="./assets/weathericons/02d.png"
+                    alt="Icon"
+                  />
+                </p>
+                <p style="vertical-align: text-top">
+                  <span id="temp" style="font-size: 40px">65</span
+                  ><span id="f_toggle2">°F</span>|<span
+                    id="c_toggle2"
+                    style="color: #ffffff8c"
+                    >°C</span
+                  >
+                </p>
+                <p>Clear Sky</p>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/Thermometer.png" alt="" />
+                  </div>
+                  <div class="col">75°</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/ThermometerCold.png" alt="" />
+                  </div>
+                  <div class="col">65°</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/Wind.png" alt="" />
+                  </div>
+                  <div class="col">10 m/s</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/DropHalf.png" alt="" />
+                  </div>
+                  <div class="col">15%</div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <!-- Day 3 End -->
+
+            <!-- Day 4 -->
+            <div class="row">
+              <div class="col collapse show" id="day4Collapse">
+                <span id="day5">Thu</span>
+              </div>
+              <div class="col collapse show" id="day4Collapse">
+                <img
+                  src="./assets/weathericons/02d.png"
+                  alt="Icon"
+                />
+              </div>
+              <div class="col collapse show" id="day4Collapse">
+                <span id="temp_max5"> H: 75° </span>
+              </div>
+              <div class="col collapse show" id="day4Collapse">
+                <span id="temp_min5" style="color: #a8a8a8"> L: 65° </span>
+              </div>
+              <div class="col d-flex justify-content-end">
+                <a
+                  data-bs-toggle="collapse"
+                  href="#day4Collapse"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="day4Collapse"
+                >
+                  <img
+                    src="./assets/CaretDown.png"
+                    class="caret caret-reversed"
+                    id="caret"
+                    alt=""
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="collapse row" id="day4Collapse">
+              <div class="col">
+                <p>
+                  Thu
+                  <img
+                    src="./assets/weathericons/02d.png"
+                    alt="Icon"
+                  />
+                </p>
+                <p style="vertical-align: text-top">
+                  <span id="temp" style="font-size: 40px">65</span
+                  ><span id="f_toggle2">°F</span>|<span
+                    id="c_toggle2"
+                    style="color: #ffffff8c"
+                    >°C</span
+                  >
+                </p>
+                <p>Clear Sky</p>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/Thermometer.png" alt="" />
+                  </div>
+                  <div class="col">75°</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/ThermometerCold.png" alt="" />
+                  </div>
+                  <div class="col">65°</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/Wind.png" alt="" />
+                  </div>
+                  <div class="col">10 m/s</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/DropHalf.png" alt="" />
+                  </div>
+                  <div class="col">15%</div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <!-- Day 4 End -->
+
+            <!-- Day 5 -->
+            <div class="row">
+              <div class="col collapse show" id="day5Collapse">
+                <span id="day5">Fri</span>
+              </div>
+              <div class="col collapse show" id="day5Collapse">
+                <img
+                  src="./assets/weathericons/02d.png"
+                  alt="Icon"
+                />
+              </div>
+              <div class="col collapse show" id="day5Collapse">
+                <span id="temp_max5"> H: 75° </span>
+              </div>
+              <div class="col collapse show" id="day5Collapse">
+                <span id="temp_min5" style="color: #a8a8a8"> L: 65° </span>
+              </div>
+              <div class="col d-flex justify-content-end">
+                <a
+                  data-bs-toggle="collapse"
+                  href="#day5Collapse"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="day5Collapse"
+                >
+                  <img
+                    src="./assets/CaretDown.png"
+                    class="caret caret-reversed"
+                    id="caret"
+                    alt=""
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="collapse row" id="day5Collapse">
+              <div class="col">
+                <p>
+                  Fri
+                  <img
+                    src="./assets/weathericons/02d.png"
+                    alt="Icon"
+                  />
+                </p>
+                <p style="vertical-align: text-top">
+                  <span id="temp" style="font-size: 40px">65</span
+                  ><span id="f_toggle2">°F</span>|<span
+                    id="c_toggle2"
+                    style="color: #ffffff8c"
+                    >°C</span
+                  >
+                </p>
+                <p>Clear Sky</p>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/Thermometer.png" alt="" />
+                  </div>
+                  <div class="col">75°</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/ThermometerCold.png" alt="" />
+                  </div>
+                  <div class="col">65°</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/Wind.png" alt="" />
+                  </div>
+                  <div class="col">10 m/s</div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <img src="./assets/DropHalf.png" alt="" />
+                  </div>
+                  <div class="col">15%</div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <!-- Day 5 End -->
           </div>
         </div>
       </div>

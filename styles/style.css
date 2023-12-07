@@ -22,14 +22,14 @@ body {
   box-shadow: 0px 4px 50px 0px #00000040;
 }
 
-.fav-btn{
+.savedBtn{
   height: 2em;
   background-color: #38598b;
   padding: 4px;
   transition: background-color 0.5s;
 }
 
-.fav-btn:hover {
+.savedBtn:hover {
   background-color: #618ac7;
 }
 
