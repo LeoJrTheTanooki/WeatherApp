@@ -40,7 +40,7 @@
       style="
         background: linear-gradient(
           180deg,
-          rgba(0, 0, 0, 0.6035) 0%,
+          rgba(0, 0, 0, 0.600) 0%,
           rgba(2, 32, 60, 0.85) 83.85%,
           rgba(10, 31, 50, 0.85) 100%
         );
@@ -51,13 +51,13 @@
           <div class="input-group mb-3 bordertest">
             <input
               class="rounded-pill"
-              style="background: #ffffff42; color: white; width: 400px"
+              style="background: #ffffff42; color: white; width: 400px; border: 0px;"
               type="text"
               id="userInput"
               placeholder="&#x1F50D; Search for a city"
             />
             <button
-              class="btn btn-outline-secondary dropdown-toggle"
+              class="btn"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -68,12 +68,8 @@
                 alt=""
               />
             </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            <ul id="savedDropDown" class="dropdown-menu dropdown-menu-end">
+
             </ul>
           </div>
 
@@ -85,7 +81,7 @@
               id="iconToday"
               src="./assets/weathericons/01d.png"
               alt=""
-              style="position: absolute; height: 5em; top: -20px; left: -20px"
+              style="position: absolute; height: 5em; top: -0px; left: -0px"
             />
             <h1>Current Weather</h1>
             <h3>
@@ -101,50 +97,48 @@
             </h3>
             <p style="vertical-align: text-top">
               <span id="temp" style="font-size: 70px">0</span
-              ><span id="f_toggle">°F</span>|<span
-                id="c_toggle"
-                style="color: #ffffff8c"
-                >°C</span
-              >
+              ><span id="currentTemp">°F</span>|
+              <!-- <span id="cToggle" style="color: #ffffff8c" >°C</span> -->
+              <button class="btn" id="tempToggle" style="color:#ffffff8c" >°C</button>
             </p>
             <h2 id="weather">Weather</h2>
           </div>
           <div class="row">
-            <div class="col-6 text-center">
+            <div class="col-6">
               <div class="row">
-                <div class="col">
+                <div class="col" style="text-align: right;">
                   Max
-                  <img src="./assets/Thermometer.png" alt="" />
+                  <img src="./assets/Thermometer.png" alt="" /> |
                 </div>
                 <div class="col" id="temp_max">0°F</div>
               </div>
             </div>
 
-            <div class="col-6 text-center">
+            <div class="col-6">
               <div class="row">
-                <div class="col">
+                <div class="col" style="text-align: right;">
                   Min
-                  <img src="./assets/ThermometerCold.png" alt="" />
+                  <img src="./assets/ThermometerCold.png" alt="" /> |
                 </div>
                 <div class="col" id="temp_min">0°F</div>
               </div>
             </div>
 
-            <div class="col-6 text-center">
+            <div class="col-6">
               <div class="row">
-                <div class="col">
+                <div class="col" style="text-align: right;">
                   Wind
-                  <img src="./assets/Wind.png" alt="" />
+                  <img src="./assets/Wind.png" alt=""/> |
                 </div>
                 <div class="col" id="wind">0m/s</div>
               </div>
             </div>
 
-            <div class="col-6 text-center">
+            <div class="col-6">
               <div class="row">
-                <div class="col">
+                <div class="col" style="text-align: right;">
                   Humidity
-                  <img src="./assets/DropHalf.png" alt="" />
+                  <img src="./assets/DropHalf.png" alt="" /> |
                 </div>
                 <div class="col" id="humidity">0%</div>
               </div>
@@ -155,7 +149,7 @@
         <div class="col-6">
           <div
             class="container grad-contain overflow-y-scroll"
-            style="height: 450px"
+            style="height: 380px"
           >
             <h1>
               <img src="./assets/CalendarBlank.png" alt="" />5 Day Forecast
@@ -164,16 +158,16 @@
             <!-- Day 1 -->
             <div class="row">
               <div class="col collapse show" id="day1Collapse">
-                <span class="day1">Mon</span>
+                <span class="day1">N/A</span>
               </div>
               <div class="col collapse show" id="day1Collapse">
-                <img src="./assets/weathericons/02d.png" alt="Icon" />
+                <!-- <img src="./assets/weathericons/02d.png" alt="Icon" /> -->
               </div>
               <div class="col collapse show" id="day1Collapse">
-                <span class="temp_max1"> H: 75° </span>
+                <span class="temp_max1"> H: 0° </span>
               </div>
               <div class="col collapse show" id="day1Collapse">
-                <span class="temp_min1" style="color: #a8a8a8"> L: 65° </span>
+                <span class="temp_min1" style="color: #a8a8a8"> L: 0° </span>
               </div>
               <div class="col d-flex justify-content-end">
                 <a
@@ -195,43 +189,43 @@
             <div class="collapse row" id="day1Collapse">
               <div class="col">
                 <p>
-                  <span class="day1">Mon</span>
-                  <img src="./assets/weathericons/02d.png" alt="Icon" />
+                  <span class="day1">N/A</span>
+                  <!-- <img src="./assets/weathericons/02d.png" alt="Icon" /> -->
                 </p>
                 <p style="vertical-align: text-top">
-                  <span id="temp1" style="font-size: 40px">65</span
-                  ><span id="f_toggle2">°F</span>|<span
-                    id="c_toggle2"
+                  <span id="temp1" style="font-size: 40px">0</span
+                  ><span id="fToggle1">°F</span>|<span
+                    id="cToggle1"
                     style="color: #ffffff8c"
                     >°C</span
                   >
                 </p>
-                <p id="weather1">Clear Sky</p>
+                <!-- <p id="weather1">Clear Sky</p> -->
               </div>
               <div class="col">
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/Thermometer.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/Thermometer.png" alt="" /> |
                   </div>
-                  <div class="col"><span class="temp_max1"> 75°</span></div>
+                  <div class="col"><span class="temp_max1"> 0°</span></div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/ThermometerCold.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/ThermometerCold.png" alt="" /> |
                   </div>
-                  <div class="col"><span class="temp_min1"> 65°</span></div>
+                  <div class="col"><span class="temp_min1"> 0°</span></div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/Wind.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/Wind.png" alt="" /> |
                   </div>
-                  <div id="wind1" class="col">10 m/s</div>
+                  <div id="wind1" class="col">0/s</div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/DropHalf.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/DropHalf.png" alt="" /> |
                   </div>
-                  <div id="humidity1" class="col">15%</div>
+                  <div id="humidity1" class="col">0%</div>
                 </div>
               </div>
             </div>
@@ -241,16 +235,16 @@
             <!-- Day 2 -->
             <div class="row">
               <div class="col collapse show" id="day2Collapse">
-                <span class="day2">Mon</span>
+                <span class="day2">N/A</span>
               </div>
               <div class="col collapse show" id="day2Collapse">
-                <img src="./assets/weathericons/02d.png" alt="Icon" />
+                <!-- <img src="./assets/weathericons/02d.png" alt="Icon" /> -->
               </div>
               <div class="col collapse show" id="day2Collapse">
-                <span class="temp_max2"> H: 75° </span>
+                <span class="temp_max2"> H: 0° </span>
               </div>
               <div class="col collapse show" id="day2Collapse">
-                <span class="temp_min2" style="color: #a8a8a8"> L: 65° </span>
+                <span class="temp_min2" style="color: #a8a8a8"> L: 0° </span>
               </div>
               <div class="col d-flex justify-content-end">
                 <a
@@ -272,43 +266,43 @@
             <div class="collapse row" id="day2Collapse">
               <div class="col">
                 <p>
-                  <span class="day2">Mon</span>
-                  <img src="./assets/weathericons/02d.png" alt="Icon" />
+                  <span class="day2">N/A</span>
+                  <!-- <img src="./assets/weathericons/02d.png" alt="Icon" /> -->
                 </p>
                 <p style="vertical-align: text-top">
-                  <span id="temp2" style="font-size: 40px">65</span
-                  ><span id="f_toggle2">°F</span>|<span
-                    id="c_toggle2"
+                  <span id="temp2" style="font-size: 40px">0</span
+                  ><span id="fToggle2">°F</span>|<span
+                    id="cToggle2"
                     style="color: #ffffff8c"
                     >°C</span
                   >
                 </p>
-                <p id="weather2">Clear Sky</p>
+                <!-- <p id="weather2">Clear Sky</p> -->
               </div>
               <div class="col">
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/Thermometer.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/Thermometer.png" alt="" /> |
                   </div>
-                  <div class="col"><span class="temp_max2"> 75°</span></div>
+                  <div class="col"><span class="temp_max2"> 0°</span></div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/ThermometerCold.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/ThermometerCold.png" alt="" /> |
                   </div>
-                  <div class="col"><span class="temp_min2"> 65°</span></div>
+                  <div class="col"><span class="temp_min2"> 0°</span></div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/Wind.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/Wind.png" alt="" /> |
                   </div>
-                  <div id="wind2" class="col">20 m/s</div>
+                  <div id="wind2" class="col">0m/s</div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/DropHalf.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/DropHalf.png" alt="" /> |
                   </div>
-                  <div id="humidity2" class="col">25%</div>
+                  <div id="humidity2" class="col">0%</div>
                 </div>
               </div>
             </div>
@@ -318,16 +312,16 @@
             <!-- Day 3 -->
             <div class="row">
               <div class="col collapse show" id="day3Collapse">
-                <span class="day3">Mon</span>
+                <span class="day3">N/A</span>
               </div>
               <div class="col collapse show" id="day3Collapse">
-                <img src="./assets/weathericons/02d.png" alt="Icon" />
+                <!-- <img src="./assets/weathericons/02d.png" alt="Icon" /> -->
               </div>
               <div class="col collapse show" id="day3Collapse">
-                <span class="temp_max3"> H: 75° </span>
+                <span class="temp_max3"> H: 0° </span>
               </div>
               <div class="col collapse show" id="day3Collapse">
-                <span class="temp_min3" style="color: #a8a8a8"> L: 65° </span>
+                <span class="temp_min3" style="color: #a8a8a8"> L: 0° </span>
               </div>
               <div class="col d-flex justify-content-end">
                 <a
@@ -349,43 +343,43 @@
             <div class="collapse row" id="day3Collapse">
               <div class="col">
                 <p>
-                  <span class="day3">Mon</span>
-                  <img src="./assets/weathericons/02d.png" alt="Icon" />
+                  <span class="day3">N/A</span>
+                  <!-- <img src="./assets/weathericons/02d.png" alt="Icon" /> -->
                 </p>
                 <p style="vertical-align: text-top">
-                  <span id="temp3" style="font-size: 40px">65</span
-                  ><span id="f_toggle2">°F</span>|<span
-                    id="c_toggle2"
+                  <span id="temp3" style="font-size: 40px">0</span
+                  ><span id="fToggle3">°F</span>|<span
+                    id="cToggle3"
                     style="color: #ffffff8c"
                     >°C</span
                   >
                 </p>
-                <p id="weather3">Clear Sky</p>
+                <!-- <p id="weather3">Clear Sky</p> -->
               </div>
               <div class="col">
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/Thermometer.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/Thermometer.png" alt="" /> |
                   </div>
-                  <div class="col"><span class="temp_max3"> 75°</span></div>
+                  <div class="col"><span class="temp_max3"> 0°</span></div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/ThermometerCold.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/ThermometerCold.png" alt="" /> |
                   </div>
-                  <div class="col"><span class="temp_min3"> 65°</span></div>
+                  <div class="col"><span class="temp_min3"> 0°</span></div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/Wind.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/Wind.png" alt="" /> |
                   </div>
-                  <div id="wind3" class="col">30 m/s</div>
+                  <div id="wind3" class="col">0m/s</div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/DropHalf.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/DropHalf.png" alt="" /> |
                   </div>
-                  <div id="humidity3" class="col">35%</div>
+                  <div id="humidity3" class="col">0%</div>
                 </div>
               </div>
             </div>
@@ -395,16 +389,16 @@
             <!-- Day 4 -->
             <div class="row">
               <div class="col collapse show" id="day4Collapse">
-                <span class="day4">Mon</span>
+                <span class="day4">N/A</span>
               </div>
               <div class="col collapse show" id="day4Collapse">
-                <img src="./assets/weathericons/02d.png" alt="Icon" />
+                <!-- <img src="./assets/weathericons/02d.png" alt="Icon" /> -->
               </div>
               <div class="col collapse show" id="day4Collapse">
-                <span class="temp_max4"> H: 75° </span>
+                <span class="temp_max4"> H: 0° </span>
               </div>
               <div class="col collapse show" id="day4Collapse">
-                <span class="temp_min4" style="color: #a8a8a8"> L: 65° </span>
+                <span class="temp_min4" style="color: #a8a8a8"> L: 0° </span>
               </div>
               <div class="col d-flex justify-content-end">
                 <a
@@ -426,43 +420,43 @@
             <div class="collapse row" id="day4Collapse">
               <div class="col">
                 <p>
-                  <span class="day4">Mon</span>
-                  <img src="./assets/weathericons/02d.png" alt="Icon" />
+                  <span class="day4">N/A</span>
+                  <!-- <img src="./assets/weathericons/02d.png" alt="Icon" /> -->
                 </p>
                 <p style="vertical-align: text-top">
-                  <span id="temp4" style="font-size: 40px">65</span
-                  ><span id="f_toggle2">°F</span>|<span
-                    id="c_toggle2"
+                  <span id="temp4" style="font-size: 40px">0</span
+                  ><span id="fToggle4">°F</span>|<span
+                    id="cToggle4"
                     style="color: #ffffff8c"
                     >°C</span
                   >
                 </p>
-                <p id="weather4">Clear Sky</p>
+                <!-- <p id="weather4">Clear Sky</p> -->
               </div>
               <div class="col">
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/Thermometer.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/Thermometer.png" alt="" /> |
                   </div>
-                  <div class="col"><span class="temp_max4"> 75°</span></div>
+                  <div class="col"><span class="temp_max4"> 0°</span></div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/ThermometerCold.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/ThermometerCold.png" alt="" /> |
                   </div>
-                  <div class="col"><span class="temp_min4"> 65°</span></div>
+                  <div class="col"><span class="temp_min4"> 0°</span></div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/Wind.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/Wind.png" alt="" /> |
                   </div>
-                  <div id="wind4" class="col">40 m/s</div>
+                  <div id="wind4" class="col">0m/s</div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/DropHalf.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/DropHalf.png" alt="" /> |
                   </div>
-                  <div id="humidity4" class="col">45%</div>
+                  <div id="humidity4" class="col">0%</div>
                 </div>
               </div>
             </div>
@@ -472,16 +466,16 @@
             <!-- Day 5 -->
             <div class="row">
               <div class="col collapse show" id="day5Collapse">
-                <span class="day5">Mon</span>
+                <span class="day5">N/A</span>
               </div>
               <div class="col collapse show" id="day5Collapse">
-                <img src="./assets/weathericons/02d.png" alt="Icon" />
+                <!-- <img src="./assets/weathericons/02d.png" alt="Icon" /> -->
               </div>
               <div class="col collapse show" id="day5Collapse">
-                <span class="temp_max5"> H: 75° </span>
+                <span class="temp_max5"> H: 0° </span>
               </div>
               <div class="col collapse show" id="day5Collapse">
-                <span class="temp_min5" style="color: #a8a8a8"> L: 65° </span>
+                <span class="temp_min5" style="color: #a8a8a8"> L: 0° </span>
               </div>
               <div class="col d-flex justify-content-end">
                 <a
@@ -503,43 +497,43 @@
             <div class="collapse row" id="day5Collapse">
               <div class="col">
                 <p>
-                  <span class="day5">Mon</span>
-                  <img src="./assets/weathericons/02d.png" alt="Icon" />
+                  <span class="day5">N/A</span>
+                  <!-- <img src="./assets/weathericons/02d.png" alt="Icon" /> -->
                 </p>
                 <p style="vertical-align: text-top">
-                  <span id="temp5" style="font-size: 40px">65</span
-                  ><span id="f_toggle2">°F</span>|<span
-                    id="c_toggle2"
+                  <span id="temp5" style="font-size: 40px">0</span
+                  ><span id="fToggle5">°F</span>|<span
+                    id="cToggle5"
                     style="color: #ffffff8c"
                     >°C</span
                   >
                 </p>
-                <p id="weather5">Clear Sky</p>
+                <!-- <p id="weather5">Clear Sky</p> -->
               </div>
               <div class="col">
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/Thermometer.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/Thermometer.png" alt="" /> |
                   </div>
-                  <div class="col"><span class="temp_max5"> 75°</span></div>
+                  <div class="col"><span class="temp_max5"> 0°</span></div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/ThermometerCold.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/ThermometerCold.png" alt="" /> |
                   </div>
-                  <div class="col"><span class="temp_min5"> 65°</span></div>
+                  <div class="col"><span class="temp_min5"> 0°</span></div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/Wind.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/Wind.png" alt="" /> |
                   </div>
-                  <div id="wind5" class="col">50 m/s</div>
+                  <div id="wind5" class="col">0m/s</div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <img src="./assets/DropHalf.png" alt="" />
+                  <div class="col" style="text-align: right;">
+                    <img src="./assets/DropHalf.png" alt="" /> |
                   </div>
-                  <div id="humidity5" class="col">55%</div>
+                  <div id="humidity5" class="col">0%</div>
                 </div>
               </div>
             </div>

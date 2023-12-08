@@ -10,40 +10,98 @@
 // Uncaught SyntaxError: import declarations may only appear at top level of a module
 import { apiKey } from "./environment.js";
 
-console.log("Gaming");
 let lat;
 let lon;
-let f_toggle;
-let c_toggle;
+let locationVar;
 const favBtn = document.getElementById("favBtn");
-let fMode = true;
+const tempToggle = document.getElementById("tempToggle");
+let tempF = true;
+let unitMode = "imperial";
+let degreeMode = "°F";
+let unDegreeMode = "°C";
 let locSaved = false;
 let userInput = document.getElementById("userInput");
 let apiWeatherLink;
 let apiForecastLink;
+let savedLocations = [];
+if (localStorage.getItem("starred locations")) {
+  savedLocations = JSON.parse(localStorage.getItem("starred locations"));
+}
+let locationElmnt = document.getElementById("location");
+let weatherElmnt = document.getElementById("weather");
+let windElmnt = document.getElementById("wind");
+let humidityElmnt = document.getElementById("humidity");
+let tempElmnt = document.getElementById("temp");
+let tempMaxElmnt = document.getElementById("temp_max");
+let tempMinElmnt = document.getElementById("temp_min");
+let iconTodayElmnt = document.getElementById("iconToday");
+let dropDownElmnt = document.getElementById("savedDropDown");
+let listElmnt = document.getElementsByTagName("li");
+userInput.value = ""
+
+
+function generateSaved() {
+  modeCheck();
+  dropDownElmnt.innerHTML = "";
+  for (let locIndex = 0; locIndex < savedLocations.length; locIndex++) {
+    dropDownElmnt.innerHTML += `<li><a class="dropdown-item" href="#" id="item${locIndex}">${savedLocations[locIndex]}</a></li>`;
+    console.log(savedLocations);
+  }
+  for (let locIndex = 0; locIndex < savedLocations.length; locIndex++) {
+    listElmnt[locIndex].addEventListener("click", function () {
+      apiWeatherLink = `http://api.openweathermap.org/data/2.5/weather?q=${savedLocations[locIndex]}&id=${apiKey}`;
+      apiForecastLink = `http://api.openweathermap.org/data/2.5/forecast?q=${savedLocations[locIndex]}&id=${apiKey}`;
+      apiCall();
+    });
+  }
+}
+
+generateSaved();
 
 favBtn.addEventListener("click", function () {
   favToggle();
 });
 
+tempToggle.addEventListener("click", function(){
+  if(tempF){
+    tempF = false;
+    unitMode = "&units=imperial";
+    degreeMode = "°F";
+  } else {
+    tempF = true;
+    unitMode = "&units=metric";
+    degreeMode = "°C";
+  }
+
+  modeCheck();
+  apiCall();
+});
+
 function favToggle() {
-  console.log("Favorite game is Rhythm Heaven");
+  console.log(savedLocations);
   if (!locSaved) {
     favBtn.src = "./assets/star.png";
+    savedLocations.push(locationVar);
     locSaved = true;
   } else {
     favBtn.src = "./assets/starline.png";
+    for (let locIndex = 0; locIndex < savedLocations.length; locIndex++) {
+      if (savedLocations[locIndex] === locationVar) {
+        savedLocations.splice(locIndex, 1);
+      }
+    }
     locSaved = false;
   }
+  generateSaved();
+  localStorage.setItem("starred locations", JSON.stringify(savedLocations));
 }
 
 async function apiCall() {
-  if (fMode) {
-  }
-
-  const promise = await fetch(apiWeatherLink);
-
+  userInput.value = "";
+  const promise = await fetch(apiWeatherLink + unitMode);
+  console.log(apiWeatherLink + unitMode);
   const data = await promise.json();
+  console.log(data);
   let temp = Math.round(data.main.temp);
   let temp_min = Math.round(data.main.temp_min);
   let temp_max = Math.round(data.main.temp_max);
@@ -55,20 +113,30 @@ async function apiCall() {
   let icon = data.weather[0].icon;
   let wind = Math.round(data.wind.speed);
   let humidity = data.main.humidity;
-  let location = state ? `${city}, ${state}` : `${city}, ${country}`;
+  locationVar = state ? `${city}, ${state}` : `${city}, ${country}`;
+  console.log(locationVar);
+  for (let locIndex = 0; locIndex < savedLocations.length; locIndex++) {
+    if (savedLocations[locIndex] === locationVar) {
+      favBtn.src = "./assets/star.png";
+      locSaved = true;
+    } else {
+      favBtn.src = "./assets/starline.png";
+      locSaved = false;
+    }
+  }
 
-  let locationElmnt = document.getElementById("location");
-  let weatherElmnt = document.getElementById("weather");
-  let windElmnt = document.getElementById("wind");
-  let humidityElmnt = document.getElementById("humidity");
-  let tempElmnt = document.getElementById("temp");
-  let tempMaxElmnt = document.getElementById("temp_max");
-  let tempMinElmnt = document.getElementById("temp_min");
-  let iconTodayElmnt = document.getElementById("iconToday");
-
-  //   let tempC;
-  //   let temp_minC;
-  //   let temp_maxC;
+  document.getElementById("currentTemp").textContent = degreeMode
+  document.getElementById("tempToggle").textContent = unDegreeMode
+  document.getElementById("fToggle1").textContent = degreeMode
+  document.getElementById("cToggle1").textContent = unDegreeMode
+  document.getElementById("fToggle2").textContent = degreeMode
+  document.getElementById("cToggle2").textContent = unDegreeMode
+  document.getElementById("fToggle3").textContent = degreeMode
+  document.getElementById("cToggle3").textContent = unDegreeMode
+  document.getElementById("fToggle4").textContent = degreeMode
+  document.getElementById("cToggle4").textContent = unDegreeMode
+  document.getElementById("fToggle5").textContent = degreeMode
+  document.getElementById("cToggle5").textContent = unDegreeMode
 
   switch (weather) {
     case "Clear":
@@ -78,33 +146,28 @@ async function apiCall() {
       weather = "Cloudy";
       break;
   }
-  console.log(data);
-  console.log(location);
   console.log(`Weather: ${weather}`);
   console.log(`Conditions: ${conditions}`);
   console.log(`Icon: ${icon}`);
   console.log(`Wind speed: ${wind}`);
   console.log(`Humidity: ${humidity}`);
-  console.log(`Temperature: ${temp}°F`);
-  console.log(`Min Temp: ${temp_min}°F`);
-  console.log(`Max Temp: ${temp_max}°F`);
+  console.log(`Temperature: ${temp}${degreeMode}`);
+  console.log(`Min Temp: ${temp_min}${degreeMode}`);
+  console.log(`Max Temp: ${temp_max}${degreeMode}`);
 
-  // console.log(`Temperature: ${Math.round(temp)}°C`);
-  // console.log(`Min Temp: ${Math.round(temp_min)}°C`);
-  // console.log(`Max Temp: ${Math.round(temp_max)}°C`);
-
-  locationElmnt.textContent = location;
+  locationElmnt.textContent = locationVar;
   weatherElmnt.textContent = weather;
-  windElmnt.textContent = `${Math.round(wind.speed)}m/s`;
+  windElmnt.textContent = `${wind}m/s`;
+  console.log(wind);
   humidityElmnt.textContent = `${humidity}%`;
   tempElmnt.textContent = temp;
-  tempMaxElmnt.textContent = `${temp_max}°F`;
-  tempMinElmnt.textContent = `${temp_min}°F`;
+  tempMaxElmnt.textContent = `${temp_max}${degreeMode}`;
+  tempMinElmnt.textContent = `${temp_min}${degreeMode}`;
   iconTodayElmnt.src = `./assets/weathericons/${icon}.png`;
 
   console.log();
 
-  const promise2 = await fetch(apiForecastLink);
+  const promise2 = await fetch(apiForecastLink + unitMode);
   const foreData = await promise2.json();
   console.log(foreData);
 
@@ -241,36 +304,50 @@ async function apiCall() {
   for (let day = 1; day < 6; day++) {
     let o = day - 1;
 
-    document.getElementById(`temp${day}`).textContent = foreTemp[o];
-    document.getElementById(`wind${day}`).textContent = `${foreWind[o]} m/s`;
+    document.getElementById(`temp${day}`).textContent =
+      Math.round(foreTemp[o]);
+    document.getElementById(`wind${day}`).textContent = `${Math.round(
+      foreWind[o]
+    )} m/s`;
     document.getElementById(`humidity${day}`).textContent = `${foreHum[o]}%`;
 
     document.getElementsByClassName(`day${day}`)[0].textContent = foreDay[o];
     document.getElementsByClassName(`day${day}`)[1].textContent = foreDay[o];
     document.getElementsByClassName(
       `temp_max${day}`
-    )[0].textContent = `H: ${foreTempMax[o]}°`;
-    document.getElementsByClassName(
-      `temp_max${day}`
-    )[1].textContent = `${foreTempMax[o]}°`;
-    document.getElementsByClassName(
-      `temp_min${day}`
-    )[0].textContent = `L: ${foreTempMin[o]}°`;
+    )[0].textContent = `H: ${Math.round(foreTempMax[o])}°`;
+    document.getElementsByClassName(`temp_max${day}`)[1].textContent =
+      Math.round(foreTempMax[o]) + degreeMode;
     document.getElementsByClassName(
       `temp_min${day}`
-    )[1].textContent = `${foreTempMin[o]}°`;
+    )[0].textContent = `L: ${Math.round(foreTempMin[o])}°`;
+    document.getElementsByClassName(`temp_min${day}`)[1].textContent =
+      Math.round(foreTempMin[o]) + degreeMode;
+  }
+}
+
+function modeCheck() {
+  if (tempF) {
+    unitMode = "&units=imperial";
+    degreeMode = "°F";
+    unDegreeMode = "°C";
+  } else {
+    unitMode = "&units=metric";
+    degreeMode = "°C";
+    unDegreeMode = "°F";
   }
 }
 
 navigator.geolocation.getCurrentPosition(success, errorFunc);
 
 function success(position) {
+  modeCheck();
   console.log("Our latitude: " + position.coords.latitude);
   console.log("Our longitude: " + position.coords.longitude);
   lat = position.coords.latitude;
   lon = position.coords.longitude;
-  apiWeatherLink = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&id=${apiKey}&units=imperial`;
-  apiForecastLink = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&id=${apiKey}&units=imperial`;
+  apiWeatherLink = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&id=${apiKey}`;
+  apiForecastLink = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&id=${apiKey}`;
   apiCall();
 }
 
@@ -279,29 +356,15 @@ function errorFunc(error) {
 }
 
 async function findLocation() {
+  modeCheck();
   let locationInput = userInput.value.toLowerCase();
-  apiWeatherLink = `http://api.openweathermap.org/data/2.5/weather?q=${locationInput}&id=${apiKey}&units=imperial`;
-  apiForecastLink = `http://api.openweathermap.org/data/2.5/forecast?q=${locationInput}&id=${apiKey}&units=imperial`;
+  apiWeatherLink = `http://api.openweathermap.org/data/2.5/weather?q=${locationInput}&id=${apiKey}`;
+  apiForecastLink = `http://api.openweathermap.org/data/2.5/forecast?q=${locationInput}&id=${apiKey}`;
   apiCall();
 }
 
 userInput.addEventListener("keypress", function (e) {
-  if(e.key === "Enter"){
+  if (e.key === "Enter") {
     findLocation();
   }
 });
-
-/* Return the following elements
- * Temperature F X
- * Min Temp F X
- * Max Temp F X
- * Temperature C
- * Min Temp C
- * Max Temp C
- * City
- * State
- * Weather
- * Wind
- * Humidity
- * Next Five Day Forecasts
- */
