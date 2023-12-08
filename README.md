@@ -116,3 +116,28 @@ https://www.figma.com/file/p1BcHrGsq1wEIrLkMJlSzg/Untitled?type=design&node-id=1
 * Time management
 * This computer
 
+#
+
+# 12/8/23
+
+## Standup
+
+## End of day report
+* Implemented search
+* Implemented favorites
+* Implemented temperature units toggle
+* Finalized layout
+* Finalized right sidebar
+* Organized code
+
+## Cut content
+* Right sidebar icons
+* Right sidebar weather
+* Middle divider
+* State displaying
+* Favoriting locations on suggested queries
+
+## Could use improvements
+* Load times
+* Responsiveness
+* Chosen icons
