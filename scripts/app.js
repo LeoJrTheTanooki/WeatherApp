@@ -104,9 +104,7 @@ async function apiCall() {
 
   console.log();
 
-  const promise2 = await fetch(
-    apiForecastLink
-  );
+  const promise2 = await fetch(apiForecastLink);
   const foreData = await promise2.json();
   console.log(foreData);
 
@@ -126,43 +124,43 @@ async function apiCall() {
 
   for (let m = 0; m < 5; m++) {
     // Declaring arrays for data
-    let d1CollectTempAvg = [];
-    let d1CollectMaxTemp = [];
-    let d1CollectMinTemp = [];
-    let d1CollectWind = [];
-    let d1CollectHum = [];
-    let d1CollectIcon = [];
-    let d1Day;
+    let collectTempAvg = [];
+    let collectMaxTemp = [];
+    let collectMinTemp = [];
+    let collectWind = [];
+    let collectHum = [];
+    let collectIcon = [];
+    let day;
 
     // Day of the Week
-    d1Day = new Date(foreData.list[i].dt_txt);
+    day = new Date(foreData.list[i].dt_txt);
 
-    switch (d1Day.getDay()) {
+    switch (day.getDay()) {
       case 0:
-        d1Day = "Sun";
+        day = "Sun";
         break;
       case 1:
-        d1Day = "Mon";
+        day = "Mon";
         break;
       case 2:
-        d1Day = "Tue";
+        day = "Tue";
         break;
       case 3:
-        d1Day = "Wed";
+        day = "Wed";
         break;
       case 4:
-        d1Day = "Thu";
+        day = "Thu";
         break;
       case 5:
-        d1Day = "Fri";
+        day = "Fri";
         break;
       case 6:
-        d1Day = "Sat";
+        day = "Sat";
         break;
     }
 
-    console.log(d1Day);
-    foreDay.push(d1Day);
+    console.log(day);
+    foreDay.push(day);
 
     // Time Tracking
     console.log(foreData.list[i].dt_txt);
@@ -170,61 +168,58 @@ async function apiCall() {
     // Gathering data from list
     for (i; i < j; i++) {
       // Temp
-      d1CollectTempAvg.push(foreData.list[i].main.temp);
+      collectTempAvg.push(foreData.list[i].main.temp);
 
       // Max Temp
-      d1CollectMaxTemp.push(foreData.list[i].main.temp_max);
+      collectMaxTemp.push(foreData.list[i].main.temp_max);
 
       // Min Temp
-      d1CollectMinTemp.push(foreData.list[i].main.temp_min);
+      collectMinTemp.push(foreData.list[i].main.temp_min);
 
       // Wind Speed
-      d1CollectWind.push(foreData.list[i].wind.speed);
+      collectWind.push(foreData.list[i].wind.speed);
 
       // Humidity
-      d1CollectHum.push(foreData.list[i].main.humidity);
+      collectHum.push(foreData.list[i].main.humidity);
 
       // Icons
-      d1CollectIcon.push(foreData.list[i].weather.icon);
+      collectIcon.push(foreData.list[i].weather.icon);
     }
 
     // Creating average for temperature element
-    let tempSum1 = d1CollectTempAvg.reduce(
-      (partialSum, a) => partialSum + a,
-      0
-    );
+    let tempSum1 = collectTempAvg.reduce((partialSum, a) => partialSum + a, 0);
     let tempAvg1 = Math.round(tempSum1 / 8);
     console.log(`Temp: ${tempAvg1}`);
     foreTemp.push(tempAvg1);
 
     // Gathering greatest temp for max temp
-    let largest = d1CollectMaxTemp[0];
-    for (let k = 0; k < d1CollectMaxTemp.length; k++) {
-      if (d1CollectMaxTemp[k] > largest) {
-        largest = d1CollectMaxTemp[k];
+    let largest = collectMaxTemp[0];
+    for (let k = 0; k < collectMaxTemp.length; k++) {
+      if (collectMaxTemp[k] > largest) {
+        largest = Math.round(collectMaxTemp[k]);
       }
     }
     console.log(`Max Temp: ${largest}`);
     foreTempMax.push(largest);
 
     // Gathering least temp for min temp
-    let smallest = d1CollectMinTemp[0];
-    for (let l = 0; l < d1CollectMinTemp.length; l++) {
-      if (d1CollectMinTemp[l] < smallest) {
-        smallest = d1CollectMinTemp[l];
+    let smallest = collectMinTemp[0];
+    for (let k = 0; k < collectMinTemp.length; k++) {
+      if (collectMinTemp[k] < smallest) {
+        smallest = Math.round(collectMinTemp[k]);
       }
     }
     console.log(`Min Temp: ${smallest}`);
     foreTempMin.push(smallest);
 
     // Creating average for wind speed
-    let windSum1 = d1CollectWind.reduce((partialSum, a) => partialSum + a, 0);
+    let windSum1 = collectWind.reduce((partialSum, a) => partialSum + a, 0);
     let windAvg1 = Math.round(windSum1 / 8);
     console.log(`Wind Speed: ${windAvg1}m/s`);
     foreWind.push(windAvg1);
 
     // Creating average for humidity
-    let humSum1 = d1CollectHum.reduce((partialSum, a) => partialSum + a, 0);
+    let humSum1 = collectHum.reduce((partialSum, a) => partialSum + a, 0);
     let humAvg1 = Math.round(humSum1 / 8);
     console.log(`Humidity: ${humAvg1}%`);
     foreHum.push(humAvg1);
@@ -242,72 +237,29 @@ async function apiCall() {
   console.log(foreTempMin);
   console.log(foreWind);
   console.log(foreHum);
-  document.get
 
-  // for(let n = 1; n < 6; n++){
-  //   let o = n - 1
+  for (let day = 1; day < 6; day++) {
+    let o = day - 1;
 
-  // document.getElementById(`temp${n}`.textContent) = foreTemp[o];
-  // document.getElementById(`temp_max${n}`.textContent) = foreTempMax[o];
-  // document.getElementById(`temp_min${n}`.textContent) = foreTempMin[o];
-  // document.getElementById(`wind${n}`.textContent) = foreWind[o];
-  // document.getElementById(`humidity${n}`.textContent) = foreHum[o];
-  // }
+    document.getElementById(`temp${day}`).textContent = foreTemp[o];
+    document.getElementById(`wind${day}`).textContent = `${foreWind[o]} m/s`;
+    document.getElementById(`humidity${day}`).textContent = `${foreHum[o]}%`;
 
-  // Day 1
-  document.getElementById(`day1`).textContent = foreDay[0];
-  document.getElementById(`temp_max1`).textContent = foreTempMax[0];
-  document.getElementById(`temp_min1`).textContent = foreTempMin[0];
-  document.getElementById(`day11`).textContent = foreDay[0];
-  document.getElementById(`temp_max11`).textContent = foreTempMax[0];
-  document.getElementById(`temp_min11`).textContent = foreTempMin[0];
-  document.getElementById(`temp1`).textContent = foreTemp[0];
-  document.getElementById(`wind1`).textContent = foreWind[0];
-  document.getElementById(`humidity1`).textContent = foreHum[0];
-
-  // Day 2
-  document.getElementById(`day2`).textContent = foreDay[1];
-  document.getElementById(`temp_max2`).textContent = foreTempMax[1];
-  document.getElementById(`temp_min2`).textContent = foreTempMin[1];
-  document.getElementById(`day22`).textContent = foreDay[1];
-  document.getElementById(`temp_max22`).textContent = foreTempMax[1];
-  document.getElementById(`temp_min22`).textContent = foreTempMin[1];
-  document.getElementById(`temp2`).textContent = foreTemp[1];
-  document.getElementById(`wind2`).textContent = foreWind[1];
-  document.getElementById(`humidity2`).textContent = foreHum[1];
-
-  // Day 3
-  document.getElementById(`day3`).textContent = foreDay[2];
-  document.getElementById(`temp_max3`).textContent = foreTempMax[2];
-  document.getElementById(`temp_min3`).textContent = foreTempMin[2];
-  document.getElementById(`day33`).textContent = foreDay[2];
-  document.getElementById(`temp_max33`).textContent = foreTempMax[2];
-  document.getElementById(`temp_min33`).textContent = foreTempMin[2];
-  document.getElementById(`temp3`).textContent = foreTemp[2];
-  document.getElementById(`wind3`).textContent = foreWind[2];
-  document.getElementById(`humidity3`).textContent = foreHum[2];
-
-  // Day 4
-  document.getElementById(`day4`).textContent = foreDay[3];
-  document.getElementById(`temp_max4`).textContent = foreTempMax[3];
-  document.getElementById(`temp_min4`).textContent = foreTempMin[3];
-  document.getElementById(`day44`).textContent = foreDay[3];
-  document.getElementById(`temp_max44`).textContent = foreTempMax[3];
-  document.getElementById(`temp_min44`).textContent = foreTempMin[3];
-  document.getElementById(`temp4`).textContent = foreTemp[3];
-  document.getElementById(`wind4`).textContent = foreWind[3];
-  document.getElementById(`humidity4`).textContent = foreHum[3];
-
-  // Day 5
-  document.getElementById(`day5`).textContent = foreDay[4];
-  document.getElementById(`temp_max5`).textContent = foreTempMax[4];
-  document.getElementById(`temp_min5`).textContent = foreTempMin[4];
-  document.getElementById(`day55`).textContent = foreDay[4];
-  document.getElementById(`temp_max55`).textContent = foreTempMax[4];
-  document.getElementById(`temp_min55`).textContent = foreTempMin[4];
-  document.getElementById(`temp5`).textContent = foreTemp[4];
-  document.getElementById(`wind5`).textContent = foreWind[4];
-  document.getElementById(`humidity5`).textContent = foreHum[4];
+    document.getElementsByClassName(`day${day}`)[0].textContent = foreDay[o];
+    document.getElementsByClassName(`day${day}`)[1].textContent = foreDay[o];
+    document.getElementsByClassName(
+      `temp_max${day}`
+    )[0].textContent = `H: ${foreTempMax[o]}°`;
+    document.getElementsByClassName(
+      `temp_max${day}`
+    )[1].textContent = `${foreTempMax[o]}°`;
+    document.getElementsByClassName(
+      `temp_min${day}`
+    )[0].textContent = `L: ${foreTempMin[o]}°`;
+    document.getElementsByClassName(
+      `temp_min${day}`
+    )[1].textContent = `${foreTempMin[o]}°`;
+  }
 }
 
 navigator.geolocation.getCurrentPosition(success, errorFunc);
@@ -333,8 +285,10 @@ async function findLocation() {
   apiCall();
 }
 
-document.getElementById(`searchBtn`).addEventListener("click", function (e) {
-  findLocation();
+userInput.addEventListener("keypress", function (e) {
+  if(e.key === "Enter"){
+    findLocation();
+  }
 });
 
 /* Return the following elements
