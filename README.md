@@ -143,3 +143,11 @@ https://www.figma.com/file/p1BcHrGsq1wEIrLkMJlSzg/Untitled?type=design&node-id=1
 * Chosen icons
 
 ### Special thanks to Fernando Guiterrez and Zachary E. Dressel for assistance with search function
+
+## PEER REVIEW by zachdressing
+Page is beautiful, the animated background is very fun!
+Dropdowns on forecast are great! the animation is smooth and looks good.
+The location text needs to have an if statement to check for and grab the state instead of just country
+Size of the page should be bigger to match the figma
+Page is very laggy, in part due to lots of console logging of data as well as a lot of string use
+Overall very good, but could def use some work in a few places, especially to improve performance.
