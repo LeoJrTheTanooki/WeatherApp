@@ -67,6 +67,8 @@ https://www.figma.com/file/p1BcHrGsq1wEIrLkMJlSzg/Untitled?type=design&node-id=1
 * Write to spans via Javascript
 * Move '°F|°C' to align to top
 
+#
+
 # 12/6/23
 
 ## Standup
@@ -90,3 +92,27 @@ https://www.figma.com/file/p1BcHrGsq1wEIrLkMJlSzg/Untitled?type=design&node-id=1
 * Changing location system
 * Search function
 * Saving coordinates to array
+
+#
+
+# 12/7/23
+
+## Standup
+* Make dropdown menus display information
+* Implement search function
+* Implement save function
+* Work on layout
+
+## End of day report
+* Necessary forecast variables fetched
+* Equations to display necessary information created
+* .getElementsByClasses not working
+* Internet and computer problems
+* Real life problems
+* Attempted to get forecast to display on HTML, failed to do so in given time
+
+## Needs work
+* Cleaning up code
+* Time management
+* This computer
+
