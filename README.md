@@ -43,7 +43,7 @@ https://www.figma.com/file/p1BcHrGsq1wEIrLkMJlSzg/Untitled?type=design&node-id=1
 * Fixing naming conventions of API
 * Culling state name
 
-### Special thanks to Caleb and Elizabeth for assistance with Fetch key security and API respectively
+### Special thanks to Caleb Sylvia and Elizabeth Boron-Trotter for assistance with Fetch key security and API respectively
 
 #
 
@@ -141,3 +141,5 @@ https://www.figma.com/file/p1BcHrGsq1wEIrLkMJlSzg/Untitled?type=design&node-id=1
 * Load times
 * Responsiveness
 * Chosen icons
+
+### Special thanks to Fernando Guiterrez and Zachary E. Dressel for assistance with search function
