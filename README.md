@@ -151,3 +151,6 @@ The location text needs to have an if statement to check for and grab the state 
 Size of the page should be bigger to match the figma
 Page is very laggy, in part due to lots of console logging of data as well as a lot of string use
 Overall very good, but could def use some work in a few places, especially to improve performance.
+
+## Note from developer
+Was able to at least comment out console logs, still needs improvements in other areas.

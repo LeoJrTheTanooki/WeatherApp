@@ -45,7 +45,7 @@ function generateSaved() {
   dropDownElmnt.innerHTML = "";
   for (let locIndex = 0; locIndex < savedLocations.length; locIndex++) {
     dropDownElmnt.innerHTML += `<li><a class="dropdown-item" href="#" id="item${locIndex}">${savedLocations[locIndex]}</a></li>`;
-    console.log(savedLocations);
+    // console.log(savedLocations);
   }
   for (let locIndex = 0; locIndex < savedLocations.length; locIndex++) {
     listElmnt[locIndex].addEventListener("click", function () {
@@ -78,7 +78,7 @@ tempToggle.addEventListener("click", function(){
 });
 
 function favToggle() {
-  console.log(savedLocations);
+  // console.log(savedLocations);
   if (!locSaved) {
     favBtn.src = "./assets/star.png";
     savedLocations.push(locationVar);
@@ -99,9 +99,9 @@ function favToggle() {
 async function apiCall() {
   userInput.value = "";
   const promise = await fetch(apiWeatherLink + unitMode);
-  console.log(apiWeatherLink + unitMode);
+  // console.log(apiWeatherLink + unitMode);
   const data = await promise.json();
-  console.log(data);
+  // console.log(data);
   let temp = Math.round(data.main.temp);
   let temp_min = Math.round(data.main.temp_min);
   let temp_max = Math.round(data.main.temp_max);
@@ -114,7 +114,7 @@ async function apiCall() {
   let wind = Math.round(data.wind.speed);
   let humidity = data.main.humidity;
   locationVar = state ? `${city}, ${state}` : `${city}, ${country}`;
-  console.log(locationVar);
+  // console.log(locationVar);
   for (let locIndex = 0; locIndex < savedLocations.length; locIndex++) {
     if (savedLocations[locIndex] === locationVar) {
       favBtn.src = "./assets/star.png";
@@ -146,30 +146,30 @@ async function apiCall() {
       weather = "Cloudy";
       break;
   }
-  console.log(`Weather: ${weather}`);
-  console.log(`Conditions: ${conditions}`);
-  console.log(`Icon: ${icon}`);
-  console.log(`Wind speed: ${wind}`);
-  console.log(`Humidity: ${humidity}`);
-  console.log(`Temperature: ${temp}${degreeMode}`);
-  console.log(`Min Temp: ${temp_min}${degreeMode}`);
-  console.log(`Max Temp: ${temp_max}${degreeMode}`);
+  // console.log(`Weather: ${weather}`);
+  // console.log(`Conditions: ${conditions}`);
+  // console.log(`Icon: ${icon}`);
+  // console.log(`Wind speed: ${wind}`);
+  // console.log(`Humidity: ${humidity}`);
+  // console.log(`Temperature: ${temp}${degreeMode}`);
+  // console.log(`Min Temp: ${temp_min}${degreeMode}`);
+  // console.log(`Max Temp: ${temp_max}${degreeMode}`);
 
   locationElmnt.textContent = locationVar;
   weatherElmnt.textContent = weather;
   windElmnt.textContent = `${wind}m/s`;
-  console.log(wind);
+  // console.log(wind);
   humidityElmnt.textContent = `${humidity}%`;
   tempElmnt.textContent = temp;
   tempMaxElmnt.textContent = `${temp_max}${degreeMode}`;
   tempMinElmnt.textContent = `${temp_min}${degreeMode}`;
   iconTodayElmnt.src = `./assets/weathericons/${icon}.png`;
 
-  console.log();
+  // console.log();
 
   const promise2 = await fetch(apiForecastLink + unitMode);
   const foreData = await promise2.json();
-  console.log(foreData);
+  // console.log(foreData);
 
   // Push final results into an array
   // .textContent each array value
@@ -222,11 +222,11 @@ async function apiCall() {
         break;
     }
 
-    console.log(day);
+    // console.log(day);
     foreDay.push(day);
 
     // Time Tracking
-    console.log(foreData.list[i].dt_txt);
+    // console.log(foreData.list[i].dt_txt);
 
     // Gathering data from list
     for (i; i < j; i++) {
@@ -252,7 +252,7 @@ async function apiCall() {
     // Creating average for temperature element
     let tempSum1 = collectTempAvg.reduce((partialSum, a) => partialSum + a, 0);
     let tempAvg1 = Math.round(tempSum1 / 8);
-    console.log(`Temp: ${tempAvg1}`);
+    // console.log(`Temp: ${tempAvg1}`);
     foreTemp.push(tempAvg1);
 
     // Gathering greatest temp for max temp
@@ -262,7 +262,7 @@ async function apiCall() {
         largest = Math.round(collectMaxTemp[k]);
       }
     }
-    console.log(`Max Temp: ${largest}`);
+    // console.log(`Max Temp: ${largest}`);
     foreTempMax.push(largest);
 
     // Gathering least temp for min temp
@@ -272,34 +272,34 @@ async function apiCall() {
         smallest = Math.round(collectMinTemp[k]);
       }
     }
-    console.log(`Min Temp: ${smallest}`);
+    // console.log(`Min Temp: ${smallest}`);
     foreTempMin.push(smallest);
 
     // Creating average for wind speed
     let windSum1 = collectWind.reduce((partialSum, a) => partialSum + a, 0);
     let windAvg1 = Math.round(windSum1 / 8);
-    console.log(`Wind Speed: ${windAvg1}m/s`);
+    // console.log(`Wind Speed: ${windAvg1}m/s`);
     foreWind.push(windAvg1);
 
     // Creating average for humidity
     let humSum1 = collectHum.reduce((partialSum, a) => partialSum + a, 0);
     let humAvg1 = Math.round(humSum1 / 8);
-    console.log(`Humidity: ${humAvg1}%`);
+    // console.log(`Humidity: ${humAvg1}%`);
     foreHum.push(humAvg1);
 
     // Culling appropriate image
 
-    console.log(`Icon ID: ?`);
+    // console.log(`Icon ID: ?`);
 
     j += 8;
   }
 
-  console.log(foreDay);
-  console.log(foreTemp);
-  console.log(foreTempMax);
-  console.log(foreTempMin);
-  console.log(foreWind);
-  console.log(foreHum);
+  // console.log(foreDay);
+  // console.log(foreTemp);
+  // console.log(foreTempMax);
+  // console.log(foreTempMin);
+  // console.log(foreWind);
+  // console.log(foreHum);
 
   for (let day = 1; day < 6; day++) {
     let o = day - 1;
@@ -342,8 +342,8 @@ navigator.geolocation.getCurrentPosition(success, errorFunc);
 
 function success(position) {
   modeCheck();
-  console.log("Our latitude: " + position.coords.latitude);
-  console.log("Our longitude: " + position.coords.longitude);
+  // console.log("Our latitude: " + position.coords.latitude);
+  // console.log("Our longitude: " + position.coords.longitude);
   lat = position.coords.latitude;
   lon = position.coords.longitude;
   apiWeatherLink = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&id=${apiKey}`;
@@ -352,7 +352,7 @@ function success(position) {
 }
 
 function errorFunc(error) {
-  console.log(error.message);
+  // console.log(error.message);
 }
 
 async function findLocation() {
